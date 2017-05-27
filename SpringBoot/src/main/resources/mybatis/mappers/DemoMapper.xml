@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper xml config-->
+<mapper namespace="com.deng.online.dao.DemoDao">
+
+    <resultMap id="demoMap" type="com.deng.online.bean.DemoBean">
+        <result property="id" column="id"/>
+        <result property="propertiesOne" column="properties_one"/>
+        <result property="propertiesTwo" column="properties_two"/>
+    </resultMap>
+
+    <sql id="demo">
+        id,properties_one,properties_two
+    </sql>
+
+    <select id="queryDemoList" resultMap="demoMap">
+      SELECT
+        <include refid="demo" />
+      FROM
+        demo
+    </select>
+
+    <select id="queryDemoByID" resultMap="demoMap">
+        SELECT
+        <include refid="demo" />
+        FROM
+        demo
+        WHERE
+        id = #{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,91 @@
+# Server settings
+server:
+    port: 8080
+    address: localhost
+    session:
+      timeout: 10
+    tomcat:
+      uri-encoding: UTF-8
+
+# SPRING PROFILES
+spring:
+    # HTTP ENCODING
+    http:
+        encoding.charset: UTF-8
+        encoding.enable: true
+        encoding.force: true
+#    # DATASOURCE CONFIGERATION - DBCP ConnectPool
+#    datasource:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://172.21.106.52:3306/cdrf?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
+#      username: root
+#      password: root123456
+#      type: org.apache.commons.dbcp.BasicDataSource
+#      initialSize: 5
+#      minIdle: 5
+#      maxActive: 20
+#      maxWait: 60000
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      filters: stat,wall,log4j
+#      poolPreparedStatements: true
+#      maxPoolPreparedStatementPerConnectionSize: 20
+
+    #FREEMARKER
+    freemarker:
+      allow-request-override: false
+      cache: true
+      check-template-location: true
+      charset: UTF-8
+      content-type: text/html
+      expose-request-attributes: false
+      expose-session-attributes: false
+      expose-spring-macro-helpers: false
+      template-loader-path: /WEB-INF/templates/
+    #THYMELEAF
+    thymeleaf:
+      mode: HTML5
+      encoding: UTF-8
+      content-type: text/html
+      cache: false
+    #Redis
+    redis:
+      host: 172.21.106.52
+      password: camelot123
+      port: 6379
+      pool:
+        max-idle: 10
+        min-idle: 5
+        max-active: 8
+        max-wait: 3000
+        max-total: 30
+
+# DATASOURCE CONFIGERATION - C3P0 ConnectPool :DatasourceConfiguration
+c3p0:
+    jdbcUrl: jdbc:mysql://172.21.106.52:3306/cdrf?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
+    user: root
+    password: root123456
+    deiverClass: com.mysql.jdbc.Driver
+    minPoolSize: 2
+    maxPoolSize: 10
+    maxIdelTime: 1800000
+    initialPoolSize: 3
+    acquireIncrement: 3
+    maxStatements: 1000
+    acquireRetryAttempts: 30
+
+# MyBatis
+mybatis:
+    mapperLocations: classpath:/mybatis/mappers/*.xml
+    cacheEnabled: true
+    lazyLoadingEnabled: true
+    useGeneratedKeys: false
+    autoMappingBehavior: PARTIAL
+    lazyLoadTriggerMethods: equals,clone,hashCode,toString
+    jdbcTypeForNull: NULL
+    defaultStatementTimeout: 25000
+
+# Logging
+logging:
+  file: log.log
+  level: DEBUG
