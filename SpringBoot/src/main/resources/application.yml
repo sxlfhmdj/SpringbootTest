@@ -50,8 +50,8 @@ spring:
       cache: false
     #Redis
     redis:
-      host: 172.21.106.52
-      password: camelot123
+      host: 10.6.60.106
+      #password:
       port: 6379
       pool:
         max-idle: 10
