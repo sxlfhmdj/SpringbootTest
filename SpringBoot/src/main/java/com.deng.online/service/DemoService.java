@@ -1,5 +1,6 @@
 package com.deng.online.service;
 
+import com.deng.online.bean.DemoBean;
 import com.deng.online.vo.DemoVo;
 
 import java.util.List;
@@ -40,4 +41,23 @@ public interface DemoService {
      * @author: <a href="mailto: dengjiang@camelotchina.com">邓江</a>
      */
     public int deleteDemoByID(String id);
+
+    /**
+     * Discription: [发送消息]
+     * Created on: 9:14 2017/6/12
+     * @param topic
+     * @param data
+     * @return:
+     * @author: <a href="mailto: dengjiang@camelotchina.com">邓江</a>
+     */
+    public void sendMessage(String topic, String data);
+
+    /**
+     * Discription: [功能描述]
+     * Created on: 10:46 2017/6/12
+     * @param id
+     * @return:
+     * @author: <a href="mailto: dengjiang@camelotchina.com">邓江</a>
+     */
+    public DemoVo findById(String id);
 }

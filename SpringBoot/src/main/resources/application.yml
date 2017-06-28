@@ -6,6 +6,14 @@ server:
       timeout: 10
     tomcat:
       uri-encoding: UTF-8
+# Actuator setting
+management:
+    #指定监控HTTP端口，如果没有配置,默认与server配置端口相同
+    port: 8080
+    #指定去掉某项的检查（不监控health.db）
+    health:
+      db:
+        enabled: false
 
 # SPRING PROFILES
 spring:
@@ -14,44 +22,20 @@ spring:
         encoding.charset: UTF-8
         encoding.enable: true
         encoding.force: true
-#    # DATASOURCE CONFIGERATION - DBCP ConnectPool
-#    datasource:
-#      driver-class-name: com.mysql.jdbc.Driver
-#      url: jdbc:mysql://172.21.106.52:3306/cdrf?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
-#      username: root
-#      password: root123456
-#      type: org.apache.commons.dbcp.BasicDataSource
-#      initialSize: 5
-#      minIdle: 5
-#      maxActive: 20
-#      maxWait: 60000
-#      timeBetweenEvictionRunsMillis: 60000
-#      minEvictableIdleTimeMillis: 300000
-#      filters: stat,wall,log4j
-#      poolPreparedStatements: true
-#      maxPoolPreparedStatementPerConnectionSize: 20
-
-    #FREEMARKER
-    freemarker:
-      allow-request-override: false
-      cache: true
-      check-template-location: true
-      charset: UTF-8
-      content-type: text/html
-      expose-request-attributes: false
-      expose-session-attributes: false
-      expose-spring-macro-helpers: false
-      template-loader-path: /WEB-INF/templates/
-    #THYMELEAF
+#THYMELEAF Setting【spring boot 默认用的模板引擎就是thymeleaf 可以不用配置】
     thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
       mode: HTML5
       encoding: UTF-8
       content-type: text/html
+      #不使用thymeleaf的缓存处理
       cache: false
-    #Redis
+
+    #Redis Setting
     redis:
-      host: 10.6.60.106
-      #password:
+      host: 10.6.60.38
+      password: 11112222
       port: 6379
       pool:
         max-idle: 10
@@ -60,19 +44,63 @@ spring:
         max-wait: 3000
         max-total: 30
 
+    #Elasticsearch Setting
+    data:
+      elasticsearch:
+        cluster-name: my-application
+        cluster-nodes: 10.6.60.38:9300
+        repositories:
+          enable: true
+
+
+    devtools:
+        restart:
+          enabled: true
+#    # Kafka Setting
+    kafka:
+        producer:
+          bootstrap-servers: 10.6.60.215:9092
+          retries: 0
+          batch-size: 16384
+          buffer-memory: 33554432
+          key-serializer: org.apache.kafka.common.serialization.StringSerializer
+          value-serializer: org.apache.kafka.common.serialization.StringSerializer
+        consumer:
+          bootstrap-servers: 10.6.60.215:9092
+          group-id: foo
+          auto-offset-reset: earliest
+          enable-auto-commit: true
+          auto-commit-interval: 100
+          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+
+    # FREEMARKER Setting
+#    freemarker:
+#      allow-request-override: false
+#      cache: true
+#      check-template-location: true
+#      charset: UTF-8
+#      content-type: text/html
+#      expose-request-attributes: false
+#      expose-session-attributes: false
+#      expose-spring-macro-helpers: false
+#      template-loader-path: /WEB-INF/templates/
+
+
 # DATASOURCE CONFIGERATION - C3P0 ConnectPool :DatasourceConfiguration
 c3p0:
-    jdbcUrl: jdbc:mysql://172.21.106.52:3306/cdrf?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
+    jdbcUrl: jdbc:mysql://10.6.60.38:3306/tis?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
     user: root
-    password: root123456
+    password: 11112222
     deiverClass: com.mysql.jdbc.Driver
     minPoolSize: 2
     maxPoolSize: 10
     maxIdelTime: 1800000
     initialPoolSize: 3
     acquireIncrement: 3
-    maxStatements: 1000
     acquireRetryAttempts: 30
+    maxStatements: 1000
 
 # MyBatis
 mybatis:
@@ -85,7 +113,15 @@ mybatis:
     jdbcTypeForNull: NULL
     defaultStatementTimeout: 25000
 
-# Logging
+#Logback
 logging:
-  file: log.log
-  level: DEBUG
+    config: classpath:etc/logback.xml
+
+
+# Kafka Setting
+#kafka:
+#    binder:
+#      brokers: 10.6.60.38:9092
+##      zk-nodes: 10.6.60.38:2181
+#    group: foo
+

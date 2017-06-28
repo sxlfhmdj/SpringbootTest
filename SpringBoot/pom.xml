@@ -8,15 +8,11 @@
     <artifactId>SpringBoot</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
-    </properties>
-
     <!-- Inherit defaults from Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.0.RELEASE</version>
+        <version>1.5.4.RELEASE</version>
     </parent>
 
     <!-- Add typical dependencies for a web application -->
@@ -40,14 +36,74 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
 
-        <!-- dbcp connectpool-->
+        <!-- Redis-->
         <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+            <version>1.4.0.RELEASE</version>
+        </dependency>
+
+        <!-- Elasticsearch-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <version>2.1.4.RELEASE</version>
+        </dependency>
+
+        <!-- 监控actuator-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>1.5.4.RELEASE</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>de.codecentric</groupId>-->
+            <!--<artifactId>spring-boot-admin-server</artifactId>-->
+            <!--<version>1.5.0</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>de.codecentric</groupId>-->
+            <!--<artifactId>spring-boot-admin-server-ui</artifactId>-->
+            <!--<version>1.5.0</version>-->
+        <!--</dependency>-->
+
+
+        <!-- kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>1.2.0.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <version>1.2.0.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
         <!-- c3p0 connectpool-->
@@ -57,37 +113,45 @@
             <version>0.9.1.2</version>
         </dependency>
 
+        <!-- dbcp connectpool-->
+        <!--<dependency>-->
+        <!--<groupId>commons-dbcp</groupId>-->
+        <!--<artifactId>commons-dbcp</artifactId>-->
+        <!--</dependency>-->
 
-        <!-- logback-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.12</version>
-        </dependency>
+        <!-- durid connectpool-->
+        <!--<dependency>-->
+        <!--<groupId>com.alibaba</groupId>-->
+        <!--<artifactId>druid</artifactId>-->
+        <!--<version>1.0.30</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <!-- freemarker-->
+        <!-- thymeleaf-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-            <version>1.1.7.RELEASE</version>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>1.5.2.RELEASE</version>
         </dependency>
 
-        <!-- Redis-->
+        <!--&lt;!&ndash; velocity&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-velocity</artifactId>-->
+            <!--<version>1.4.6.RELEASE</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; freemarker&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-freemarker</artifactId>-->
+            <!--<version>1.1.7.RELEASE</version>-->
+        <!--</dependency>-->
+
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
         </dependency>
 
         <!-- Gson-->
@@ -103,17 +167,12 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>2.6.1</version>
         </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.6.1</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>redis.clients</groupId>-->
-            <!--<artifactId>jedis</artifactId>-->
-            <!--<version>2.8.2</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
@@ -127,18 +186,64 @@
             <version>2.9.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>3.0.9</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>redis.clients</groupId>-->
+        <!--<artifactId>jedis</artifactId>-->
+        <!--<version>2.8.2</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
     <!-- Package as an executable jar -->
     <build>
+        <defaultGoal>compile</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <fork>true</fork>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 
+    <!-- Maven私服配置 -->
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>releases</id>
+            <name>libs-release</name>
+            <url>http://172.21.1.141:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <snapshots />
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>http://172.21.1.141:8081/nexus/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Team nexus Release Repository</name>
+            <url>http://172.21.1.141:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Team nexus Snapshot Repository</name>
+            <url>http://172.21.1.141:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <!-- ~~~~~~~~~~Maven私服配置结束 -->
 
 </project>
