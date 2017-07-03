@@ -56,7 +56,15 @@ spring:
     devtools:
         restart:
           enabled: true
-#    # Kafka Setting
+
+    #RabbitMQ Setting
+    rabbitmq:
+      addresses: 10.6.60.33:5672
+      #如果要进行消息回调，则这里必须要设置为true
+      publisher-confirms: true
+      
+
+    # Kafka Setting
     kafka:
         producer:
           bootstrap-servers: 10.6.60.215:9092
@@ -124,4 +132,5 @@ logging:
 #      brokers: 10.6.60.38:9092
 ##      zk-nodes: 10.6.60.38:2181
 #    group: foo
+
 
