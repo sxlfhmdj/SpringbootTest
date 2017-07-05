@@ -79,6 +79,12 @@
             <!--<version>1.5.0</version>-->
         <!--</dependency>-->
 
+        <!--导入apache zookeeper包-->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.3.3</version>
+        </dependency>
 
         <!--集成RabbitMQ Spring Boot 依赖包-->
         <dependency>
