@@ -4,12 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-/**
- * <p>Description: []</p>
- * Created on: 2018/4/23
- *
- * @author dengjiang_v@didichuxing.com
- */
 public class ProxyFactory {
 
     private Object target;
