@@ -1,11 +1,5 @@
 package proxy.test;
 
-/**
- * <p>Description: []</p>
- * Created on: 2018/4/23
- *
- * @author dengjiang_v@didichuxing.com
- */
 
 import proxy.test.subClassProxy.ProxyFactory;
 import proxy.test.staticProxy.MyObject;
