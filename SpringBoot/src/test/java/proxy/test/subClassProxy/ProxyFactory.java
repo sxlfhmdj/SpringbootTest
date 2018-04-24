@@ -6,12 +6,6 @@ import org.mockito.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
-/**
- * <p>Description: []</p>
- * Created on: 2018/4/23
- *
- * @author dengjiang_v@didichuxing.com
- */
 public class ProxyFactory implements MethodInterceptor {
 
     private Object target;
